@@ -3749,6 +3749,22 @@
       "routineNotMade": "作成されていません"
     }
   },
+  "call": {
+    "audio": "音声通話",
+    "video": "ビデオ通話",
+    "with": "{{name}}との通話",
+    "joining": "通話に参加しています…",
+    "failed": "通話を開始できませんでした。しばらくしてからもう一度お試しください。",
+    "tooMany": "試行回数が多すぎます。1分ほどお待ちください。",
+    "close": "閉じる",
+    "controls": "通話の操作",
+    "mic": "マイク",
+    "camera": "カメラ",
+    "share": "画面を共有",
+    "leave": "退出",
+    "shareHint": "共有するとあなた自身の画面が表示されます。音声も送るには、WindowsのChromeまたはEdgeで画面全体を共有してください。",
+    "shareUnsupported": "このブラウザでは画面を共有できません。"
+  },
   "dm": {
     "subtitle": "{{role}} · オーナー: {{owner}}",
     "subtitleNoOwner": "{{role}} · オーナー: 管理者",

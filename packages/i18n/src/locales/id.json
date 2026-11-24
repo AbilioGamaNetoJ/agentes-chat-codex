@@ -3764,6 +3764,22 @@
       "routineNotMade": "tidak dibuat"
     }
   },
+  "call": {
+    "audio": "Panggilan suara",
+    "video": "Panggilan video",
+    "with": "Panggilan dengan {{name}}",
+    "joining": "Bergabung ke panggilan…",
+    "failed": "Panggilan tidak dapat dimulai. Coba lagi sebentar lagi.",
+    "tooMany": "Terlalu banyak percobaan. Tunggu satu menit.",
+    "close": "Tutup",
+    "controls": "Kontrol panggilan",
+    "mic": "Mikrofon",
+    "camera": "Kamera",
+    "share": "Bagikan layar",
+    "leave": "Keluar",
+    "shareHint": "Berbagi menampilkan layar Anda sendiri. Untuk mengirim suaranya juga, bagikan seluruh layar di Chrome atau Edge pada Windows.",
+    "shareUnsupported": "Browser ini tidak dapat membagikan layar."
+  },
   "dm": {
     "subtitle": "{{role}} · milik {{owner}}",
     "subtitleNoOwner": "{{role}} · milik admin",

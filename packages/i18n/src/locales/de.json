@@ -3912,6 +3912,22 @@
       "routineNotMade": "nicht erstellt"
     }
   },
+  "call": {
+    "audio": "Sprachanruf",
+    "video": "Videoanruf",
+    "with": "Anruf mit {{name}}",
+    "joining": "Anruf wird betreten…",
+    "failed": "Der Anruf konnte nicht gestartet werden. Versuche es gleich noch einmal.",
+    "tooMany": "Zu viele Versuche. Warte eine Minute.",
+    "close": "Schließen",
+    "controls": "Anrufsteuerung",
+    "mic": "Mikrofon",
+    "camera": "Kamera",
+    "share": "Bildschirm teilen",
+    "leave": "Verlassen",
+    "shareHint": "Beim Teilen wird dein eigener Bildschirm gezeigt. Um auch dessen Ton zu senden, teile in Chrome oder Edge unter Windows den ganzen Bildschirm.",
+    "shareUnsupported": "Dieser Browser kann den Bildschirm nicht teilen."
+  },
   "dm": {
     "subtitle": "{{role}} · gehört {{owner}}",
     "subtitleNoOwner": "{{role}} · gehört den Administratoren",
