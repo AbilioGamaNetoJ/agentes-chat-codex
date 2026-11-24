@@ -4136,6 +4136,23 @@ export const ptBR = {
       routineNotMade: "não criada",
     },
   },
+  call: {
+    audio: "Ligação de voz",
+    video: "Ligação de vídeo",
+    with: "Ligação com {{name}}",
+    joining: "Entrando na ligação…",
+    failed: "Não deu para iniciar a chamada. Tente de novo em instantes.",
+    tooMany: "Muitas tentativas. Espere um minuto.",
+    close: "Fechar",
+    controls: "Controles da chamada",
+    mic: "Microfone",
+    camera: "Câmera",
+    share: "Compartilhar tela",
+    leave: "Sair",
+    shareHint:
+      "Compartilhar mostra a sua própria tela. Para enviar o som dela também, compartilhe a tela inteira no Chrome ou no Edge, no Windows.",
+    shareUnsupported: "Este navegador não consegue compartilhar a tela.",
+  },
   dm: {
     subtitle: "{{role}} · de {{owner}}",
     subtitleNoOwner: "{{role}} · dos administradores",

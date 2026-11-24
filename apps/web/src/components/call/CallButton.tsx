@@ -38,20 +38,20 @@ export function CallButton({ channelId, name }: { channelId: string; name: strin
         size="sm"
         variant="ghost"
         iconOnly
-        icon="phone"
+        icon="callPhone"
         className="channel__icon"
-        aria-label={t("call.audio", { name })}
-        title={t("call.audio", { name })}
+        aria-label={t("call.audio")}
+        title={t("call.audio")}
         onClick={() => void start(false)}
       />
       <Button
         size="sm"
         variant="ghost"
         iconOnly
-        icon="video"
+        icon="camera"
         className="channel__icon"
-        aria-label={t("call.video", { name })}
-        title={t("call.video", { name })}
+        aria-label={t("call.video")}
+        title={t("call.video")}
         onClick={() => void start(true)}
       />
       {call && (
