@@ -73,6 +73,7 @@ import type {
   BrowserProfile,
   CalendarEvent,
   CalendarRange,
+  CallToken,
   Channel,
   ChannelCard,
   ChannelCategory,
@@ -1303,6 +1304,11 @@ export function createHttpApi(options: TransportOptions = {}): HttpApi {
       revert: async (orgId, id) => {
         await request<unknown>(`${org(orgId)}/memories/${enc(id)}/revert`, { json: {} });
       },
+    },
+    calls: {
+      enabled: async (orgId) => (await request<{ enabled: boolean }>(`${org(orgId)}/calls`)).enabled,
+      token: (orgId, channelId) =>
+        request<CallToken>(`${org(orgId)}/channels/${enc(channelId)}/call-token`, { json: {} }),
     },
     dms: {
       list: async (orgId) => (await request<{ dms: DirectMessage[] }>(`${org(orgId)}/dms`)).dms,

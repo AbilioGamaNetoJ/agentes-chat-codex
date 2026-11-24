@@ -38,6 +38,7 @@ import { billingRoutes } from "./routes/app/billing";
 import { browserRoutes } from "./routes/app/browser";
 import { browserProfileRoutes } from "./routes/app/browser-profiles";
 import { calendarRoutes } from "./routes/app/calendar";
+import { callRoutes } from "./routes/app/calls";
 import { channelRoutes } from "./routes/app/channels";
 import { chatRoutes } from "./routes/app/chat";
 import { codeSessionRoutes } from "./routes/app/code-sessions";
@@ -258,6 +259,7 @@ export function createApp(options: AppOptions) {
     api.route("/app", problemReportRoutes(deps));
     api.route("/app", jevRoutes(deps));
     api.route("/app", feedbackRoutes(deps));
+    api.route("/app", callRoutes(deps));
     api.route("/app", gifKeyRoutes(deps));
     api.route("/app", speechKeyRoutes(deps));
     api.route("/app", voiceRoutes(deps));

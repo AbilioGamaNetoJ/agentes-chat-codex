@@ -3937,6 +3937,15 @@ export function createFakeHttpApi(state: FakeState): Omit<HttpApi, FakedParts> {
         log("memory.revert", orgId, id);
       },
     },
+    calls: {
+      enabled: async () => false,
+      token: async (_orgId, channelId) => ({
+        url: "wss://rtc.example.com",
+        token: "fake-token",
+        room: `channel:${channelId}`,
+        expiresIn: 600,
+      }),
+    },
     dms: {
       list: async () => state.dms.map(dmRow),
       open: async (orgId, target) => {

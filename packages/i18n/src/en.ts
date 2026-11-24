@@ -4258,6 +4258,23 @@ export const en = {
       routineNotMade: "not created",
     },
   },
+  call: {
+    audio: "Voice call with {{name}}",
+    video: "Video call with {{name}}",
+    with: "Call with {{name}}",
+    joining: "Joining the call…",
+    failed: "Couldn't start the call. Try again in a moment.",
+    tooMany: "Too many tries. Wait a minute.",
+    close: "Close",
+    controls: "Call controls",
+    mic: "Microphone",
+    camera: "Camera",
+    share: "Share screen",
+    leave: "Leave",
+    shareHint:
+      "Sharing shows your own screen. To send its sound too, share the whole screen in Chrome or Edge on Windows.",
+    shareUnsupported: "This browser can't share the screen.",
+  },
   dm: {
     subtitle: "{{role}} · owned by {{owner}}",
     subtitleNoOwner: "{{role}} · owned by the admins",
