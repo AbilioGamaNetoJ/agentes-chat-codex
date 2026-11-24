@@ -8959,3 +8959,14 @@ export function useWifiPairState(orgId: string, machineId: string | null, starte
   }, [api, orgId, machineId, id]);
   return started && state.data ? { ...state.data, qr: started.qr } : started;
 }
+
+/** Whether this server has calls turned on (ADR 0220): the call button shows only then. */
+export const useCallsEnabled = (orgId: string) => {
+  const api = useApi();
+  return useQuery({
+    queryKey: ["org", orgId, "calls"] as const,
+    queryFn: () => api.calls.enabled(orgId),
+    staleTime: 5 * 60_000,
+    retry: false,
+  });
+};

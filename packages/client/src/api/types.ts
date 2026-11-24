@@ -101,6 +101,14 @@ export type JevKeyInput = string | { orgId: string; credentialId: string };
  * The installation's GIPHY key, for its pinned owner on a server that isn't agentes.chat's own (`GET
  * /api/app/gif-key`, ADR 0091): with it, every workspace has GIFs (`OrgSettings.gifsAvailable`).
  */
+/** What the browser needs to join a call: the LiveKit address and a short-lived token for one room (ADR 0220). */
+export interface CallToken {
+  url: string;
+  token: string;
+  room: string;
+  expiresIn: number;
+}
+
 export interface GifKey {
   /** `env`: `GIPHY_API_KEY`, read-only here. `settings`: added in Settings. Null: none. */
   source: "env" | "settings" | null;

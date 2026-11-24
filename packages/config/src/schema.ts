@@ -682,6 +682,26 @@ export const envVars = {
     section: "Chat",
     secret: true,
   },
+  LIVEKIT_URL: {
+    schema: z.url().optional(),
+    description:
+      "WebSocket address of a LiveKit server (`wss://…`), optional. With this, `LIVEKIT_API_KEY` and `LIVEKIT_API_SECRET` set, people start audio and video calls from a conversation; the room opens on the same screen. The server signs a short-lived join token for each person after checking they can read the conversation, so the key and secret never leave it. Without all three: no calls.",
+    section: "Chat",
+    example: "wss://rtc.example.com",
+  },
+  LIVEKIT_API_KEY: {
+    schema: z.string().optional(),
+    description: "API key of the LiveKit server in `LIVEKIT_URL`, optional (calls).",
+    section: "Chat",
+    secret: true,
+  },
+  LIVEKIT_API_SECRET: {
+    schema: z.string().optional(),
+    description:
+      "API secret of the LiveKit server in `LIVEKIT_URL`, optional (calls). Only signs join tokens on the server.",
+    section: "Chat",
+    secret: true,
+  },
   SPEECH_ENGINES: {
     schema: z.string().optional(),
     description:

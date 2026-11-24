@@ -104,6 +104,7 @@ import type {
   CalendarEventInput,
   CalendarEventPatch,
   CalendarRange,
+  CallToken,
   Channel,
   ChannelCard,
   ChannelCategory,
@@ -1524,6 +1525,16 @@ export interface ApiClient {
     ): Promise<OwnOAuthClient>;
     /** Removes it; a 409 `connector.oauth_client_in_use` while accounts sign in with it. */
     removeOwnClient(orgId: string, issuer: string): Promise<void>;
+  };
+  /** Audio and video calls inside a conversation (ADR 0220). */
+  calls: {
+    /** Whether this server has calls turned on (`LIVEKIT_*` set). */
+    enabled(orgId: string): Promise<boolean>;
+    /**
+     * A token to join the conversation's room: only for someone who can read it. `calls_unavailable` (404) when calls
+     * aren't set up, `rate_limited` (429) past 20 a minute.
+     */
+    token(orgId: string, channelId: string): Promise<CallToken>;
   };
   dms: {
     /** My direct conversations, with unread counts. */

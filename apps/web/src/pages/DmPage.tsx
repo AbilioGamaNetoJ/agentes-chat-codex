@@ -16,6 +16,7 @@ import { AgentSetupIntro, useSetupSteps } from "@/components/AgentSetup";
 import { useAgentPanelShown, useOpenAgentPanel } from "@/components/agent-panel-context";
 import { ModelPickerButton } from "@/components/ai/ModelPicker";
 import { DmMoreMenu } from "@/components/ConversationMenu";
+import { CallButton } from "@/components/call/CallButton";
 import { ComputerButton } from "@/components/computer/ComputerDialog";
 import { ErrorState } from "@/components/Loading";
 import { NavToggle } from "@/components/NavDrawer";
@@ -131,6 +132,8 @@ export function DmPage({ target, focusMessageId }: { target: DmTarget; focusMess
               right hand's AI is each person's own ("Sua IA" in the sidebar), so its header has no model button. */}
           {agent && !rightHand && <ModelPickerButton agent={agent} className="channel__brain" />}
           {agent && <ComputerButton agent={agent} queueOnly={side?.docked && seesDetails(agent)} />}
+          {/* A call with the person, in the same screen (ADR 0220); an agent has no call. */}
+          {person && <CallButton channelId={dm.data.channelId} name={name} />}
           {/* The same field as a channel's, held to this DM. */}
           <HeaderSearch channelId={dm.data.channelId} onOpen={onSearch} searching={searching} dm />
           {/* Its own list, as its right click elsewhere, with this conversation's background. */}
