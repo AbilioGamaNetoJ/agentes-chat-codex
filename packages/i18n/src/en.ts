@@ -4259,8 +4259,8 @@ export const en = {
     },
   },
   call: {
-    audio: "Voice call with {{name}}",
-    video: "Video call with {{name}}",
+    audio: "Voice call",
+    video: "Video call",
     with: "Call with {{name}}",
     joining: "Joining the call…",
     failed: "Couldn't start the call. Try again in a moment.",
