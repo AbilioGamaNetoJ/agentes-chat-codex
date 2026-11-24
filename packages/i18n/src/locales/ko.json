@@ -3747,6 +3747,22 @@
       "routineNotMade": "생성되지 않음"
     }
   },
+  "call": {
+    "audio": "음성 통화",
+    "video": "영상 통화",
+    "with": "{{name}}님과 통화",
+    "joining": "통화에 참여하는 중…",
+    "failed": "통화를 시작하지 못했습니다. 잠시 후 다시 시도하세요.",
+    "tooMany": "시도가 너무 많습니다. 1분 기다려 주세요.",
+    "close": "닫기",
+    "controls": "통화 제어",
+    "mic": "마이크",
+    "camera": "카메라",
+    "share": "화면 공유",
+    "leave": "나가기",
+    "shareHint": "공유하면 내 화면이 보입니다. 소리도 함께 보내려면 Windows의 Chrome 또는 Edge에서 전체 화면을 공유하세요.",
+    "shareUnsupported": "이 브라우저는 화면을 공유할 수 없습니다."
+  },
   "dm": {
     "subtitle": "{{role}} · 소유자 {{owner}}",
     "subtitleNoOwner": "{{role}} · 소유자 관리자",

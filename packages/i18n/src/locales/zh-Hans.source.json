@@ -9593,6 +9593,48 @@
   "actionCard.agentProposal.routineNotMade": {
     "value": "not created"
   },
+  "call.audio": {
+    "value": "Voice call"
+  },
+  "call.video": {
+    "value": "Video call"
+  },
+  "call.with": {
+    "value": "Call with {{name}}"
+  },
+  "call.joining": {
+    "value": "Joining the call…"
+  },
+  "call.failed": {
+    "value": "Couldn't start the call. Try again in a moment."
+  },
+  "call.tooMany": {
+    "value": "Too many tries. Wait a minute."
+  },
+  "call.close": {
+    "value": "Close"
+  },
+  "call.controls": {
+    "value": "Call controls"
+  },
+  "call.mic": {
+    "value": "Microphone"
+  },
+  "call.camera": {
+    "value": "Camera"
+  },
+  "call.share": {
+    "value": "Share screen"
+  },
+  "call.leave": {
+    "value": "Leave"
+  },
+  "call.shareHint": {
+    "value": "Sharing shows your own screen. To send its sound too, share the whole screen in Chrome or Edge on Windows."
+  },
+  "call.shareUnsupported": {
+    "value": "This browser can't share the screen."
+  },
   "dm.subtitle": {
     "value": "{{role}} · owned by {{owner}}"
   },

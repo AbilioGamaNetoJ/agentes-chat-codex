@@ -4065,6 +4065,22 @@
       "routineNotMade": "non creata"
     }
   },
+  "call": {
+    "audio": "Chiamata vocale",
+    "video": "Videochiamata",
+    "with": "Chiamata con {{name}}",
+    "joining": "Accesso alla chiamata…",
+    "failed": "Impossibile avviare la chiamata. Riprova tra un momento.",
+    "tooMany": "Troppi tentativi. Aspetta un minuto.",
+    "close": "Chiudi",
+    "controls": "Controlli della chiamata",
+    "mic": "Microfono",
+    "camera": "Fotocamera",
+    "share": "Condividi schermo",
+    "leave": "Esci",
+    "shareHint": "La condivisione mostra il tuo schermo. Per inviare anche il suo audio, condividi l'intero schermo in Chrome o Edge su Windows.",
+    "shareUnsupported": "Questo browser non può condividere lo schermo."
+  },
   "dm": {
     "subtitle": "{{role}} · di {{owner}}",
     "subtitleNoOwner": "{{role}} · degli amministratori",

@@ -638,6 +638,7 @@
       "codeSessions.tabs.terminalN"
     ],
     "fr": [
+      "call.mic",
       "usage.kinds.routines",
       "channel.tooLong.fileName",
       "calendar.moreRuns",
@@ -2069,6 +2070,7 @@
       "connectors.store.account"
     ],
     "nl": [
+      "call.camera",
       "aiHub.accounts",
       "usage.kinds.routines",
       "calendar.moreRuns",

@@ -3751,6 +3751,22 @@
       "routineNotMade": "未创建"
     }
   },
+  "call": {
+    "audio": "语音通话",
+    "video": "视频通话",
+    "with": "与{{name}}通话",
+    "joining": "正在加入通话…",
+    "failed": "无法开始通话。请稍后再试。",
+    "tooMany": "尝试次数过多。请等待一分钟。",
+    "close": "关闭",
+    "controls": "通话控制",
+    "mic": "麦克风",
+    "camera": "摄像头",
+    "share": "共享屏幕",
+    "leave": "离开",
+    "shareHint": "共享会显示你自己的屏幕。若要同时发送其声音，请在 Windows 的 Chrome 或 Edge 中共享整个屏幕。",
+    "shareUnsupported": "此浏览器无法共享屏幕。"
+  },
   "dm": {
     "subtitle": "{{role}} · 负责人：{{owner}}",
     "subtitleNoOwner": "{{role}} · 负责人：管理员",

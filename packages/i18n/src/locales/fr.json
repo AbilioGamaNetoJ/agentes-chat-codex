@@ -4057,6 +4057,22 @@
       "routineNotMade": "non créée"
     }
   },
+  "call": {
+    "audio": "Appel vocal",
+    "video": "Appel vidéo",
+    "with": "Appel avec {{name}}",
+    "joining": "Connexion à l'appel…",
+    "failed": "Impossible de lancer l'appel. Réessayez dans un instant.",
+    "tooMany": "Trop de tentatives. Attendez une minute.",
+    "close": "Fermer",
+    "controls": "Commandes de l'appel",
+    "mic": "Microphone",
+    "camera": "Caméra",
+    "share": "Partager l'écran",
+    "leave": "Quitter",
+    "shareHint": "Le partage montre votre propre écran. Pour envoyer aussi son son, partagez l'écran entier dans Chrome ou Edge sous Windows.",
+    "shareUnsupported": "Ce navigateur ne peut pas partager l'écran."
+  },
   "dm": {
     "subtitle": "{{role}} · géré par {{owner}}",
     "subtitleNoOwner": "{{role}} · géré par les administrateurs",

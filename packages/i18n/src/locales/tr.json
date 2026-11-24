@@ -3895,6 +3895,22 @@
       "routineNotMade": "oluşturulmadı"
     }
   },
+  "call": {
+    "audio": "Sesli arama",
+    "video": "Görüntülü arama",
+    "with": "{{name}} ile arama",
+    "joining": "Aramaya katılınıyor…",
+    "failed": "Arama başlatılamadı. Birazdan tekrar dene.",
+    "tooMany": "Çok fazla deneme. Bir dakika bekle.",
+    "close": "Kapat",
+    "controls": "Arama kontrolleri",
+    "mic": "Mikrofon",
+    "camera": "Kamera",
+    "share": "Ekranı paylaş",
+    "leave": "Ayrıl",
+    "shareHint": "Paylaşım kendi ekranını gösterir. Sesini de göndermek için Windows'ta Chrome veya Edge'de tüm ekranı paylaş.",
+    "shareUnsupported": "Bu tarayıcı ekranı paylaşamıyor."
+  },
   "dm": {
     "subtitle": "{{role}} · sahibi: {{owner}}",
     "subtitleNoOwner": "{{role}} · sahibi: yöneticiler",

@@ -4052,6 +4052,22 @@
       "routineNotMade": "no creada"
     }
   },
+  "call": {
+    "audio": "Llamada de voz",
+    "video": "Videollamada",
+    "with": "Llamada con {{name}}",
+    "joining": "Entrando en la llamada…",
+    "failed": "No se pudo iniciar la llamada. Inténtalo de nuevo en un momento.",
+    "tooMany": "Demasiados intentos. Espera un minuto.",
+    "close": "Cerrar",
+    "controls": "Controles de la llamada",
+    "mic": "Micrófono",
+    "camera": "Cámara",
+    "share": "Compartir pantalla",
+    "leave": "Salir",
+    "shareHint": "Compartir muestra tu propia pantalla. Para enviar también su sonido, comparte la pantalla completa en Chrome o Edge en Windows.",
+    "shareUnsupported": "Este navegador no puede compartir la pantalla."
+  },
   "dm": {
     "subtitle": "{{role}} · de {{owner}}",
     "subtitleNoOwner": "{{role}} · de los administradores",

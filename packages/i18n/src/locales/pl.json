@@ -4204,6 +4204,22 @@
       "routineNotMade": "nie utworzono"
     }
   },
+  "call": {
+    "audio": "Połączenie głosowe",
+    "video": "Połączenie wideo",
+    "with": "Rozmowa z {{name}}",
+    "joining": "Dołączanie do rozmowy…",
+    "failed": "Nie udało się rozpocząć rozmowy. Spróbuj ponownie za chwilę.",
+    "tooMany": "Za dużo prób. Poczekaj minutę.",
+    "close": "Zamknij",
+    "controls": "Sterowanie rozmową",
+    "mic": "Mikrofon",
+    "camera": "Kamera",
+    "share": "Udostępnij ekran",
+    "leave": "Wyjdź",
+    "shareHint": "Udostępnianie pokazuje Twój własny ekran. Aby wysłać też jego dźwięk, udostępnij cały ekran w Chrome lub Edge w systemie Windows.",
+    "shareUnsupported": "Ta przeglądarka nie może udostępniać ekranu."
+  },
   "dm": {
     "subtitle": "{{role}} · odpowiada: {{owner}}",
     "subtitleNoOwner": "{{role}} · odpowiadają: administratorzy",

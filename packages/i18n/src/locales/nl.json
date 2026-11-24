@@ -3914,6 +3914,22 @@
       "routineNotMade": "niet aangemaakt"
     }
   },
+  "call": {
+    "audio": "Spraakoproep",
+    "video": "Video-oproep",
+    "with": "Gesprek met {{name}}",
+    "joining": "Deelnemen aan het gesprek…",
+    "failed": "Het gesprek kon niet worden gestart. Probeer het zo opnieuw.",
+    "tooMany": "Te veel pogingen. Wacht een minuut.",
+    "close": "Sluiten",
+    "controls": "Gespreksbediening",
+    "mic": "Microfoon",
+    "camera": "Camera",
+    "share": "Scherm delen",
+    "leave": "Verlaten",
+    "shareHint": "Delen toont je eigen scherm. Deel in Chrome of Edge op Windows het hele scherm om ook het geluid mee te sturen.",
+    "shareUnsupported": "Deze browser kan het scherm niet delen."
+  },
   "dm": {
     "subtitle": "{{role}} · eigenaar {{owner}}",
     "subtitleNoOwner": "{{role}} · eigenaar: de beheerders",
