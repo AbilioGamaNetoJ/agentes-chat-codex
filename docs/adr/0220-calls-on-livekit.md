@@ -27,3 +27,8 @@ building media transport, and its client SDK runs in the browser, so the call ca
 
 The call has no record in the chat's database: a room exists while someone is in it. Who is in a call is LiveKit's
 state, not ours; a later step may post call start and end in the conversation.
+
+## Known gaps
+
+- No ring or invite: the other side joins only by pressing the call button in the DM themselves. A notification step is future work.
+- The room has not been exercised by hand against `rtc.codexcreate.cloud` yet; the token route is covered by tests, the media path is not.
