@@ -9,7 +9,11 @@ describe("call strings", () => {
   });
   test("pt-BR holds every call key of English, none left as its own key", () => {
     const keys = flatten(en.call).map(([k]) => k);
-    expect(flatten(ptBR.call).map(([k]) => k).sort()).toEqual(keys.sort());
+    expect(
+      flatten(ptBR.call)
+        .map(([k]) => k)
+        .sort(),
+    ).toEqual(keys.sort());
     for (const [, v] of flatten(ptBR.call)) expect(v).not.toMatch(/^call\./);
   });
 });
