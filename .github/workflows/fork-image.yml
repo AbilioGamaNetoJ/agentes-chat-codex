@@ -1,14 +1,16 @@
 # Fork image: builds the same image as the upstream Dockerfile and publishes it to
-# ghcr.io/abiliogamanetoj/agentes-chat-codex. Runs on pushes to the fork's own branches
-# and on manual dispatch. Kept separate from the upstream ci.yml so rebasing on the
-# upstream never touches it.
+# ghcr.io/abiliogamanetoj/agentes-chat-codex. Runs on pushes to main and on manual
+# dispatch only — the base branch build stays manual while the upstream history is
+# being fast-forwarded (a full Docker build per chunk would burn runner minutes and
+# publish `latest` from intermediate upstream commits). Once the base is fully
+# synced, the base trigger can be restored. Kept separate from the upstream ci.yml
+# so rebasing on the upstream never touches it.
 name: Fork image
 
 on:
   push:
     branches:
       - main
-      - "agentes/dev/base"
   workflow_dispatch:
 
 concurrency:
@@ -22,6 +24,7 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
