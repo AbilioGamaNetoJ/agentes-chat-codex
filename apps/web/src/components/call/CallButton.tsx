@@ -38,7 +38,7 @@ export function CallButton({ channelId, name }: { channelId: string; name: strin
         size="sm"
         variant="ghost"
         iconOnly
-        icon="phone"
+        icon="callPhone"
         className="channel__icon"
         aria-label={t("call.audio", { name })}
         title={t("call.audio", { name })}
@@ -48,7 +48,7 @@ export function CallButton({ channelId, name }: { channelId: string; name: strin
         size="sm"
         variant="ghost"
         iconOnly
-        icon="video"
+        icon="camera"
         className="channel__icon"
         aria-label={t("call.video", { name })}
         title={t("call.video", { name })}

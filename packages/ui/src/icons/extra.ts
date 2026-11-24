@@ -447,6 +447,20 @@ export const extraIcons = {
   ],
   /** A cloud (agentes.chat Cloud, status). */
   cloud: [["path", { d: "M6 15.5a3.5 3.5 0 0 1-.4-7 4.5 4.5 0 0 1 8.7-.9A3.5 3.5 0 0 1 14 15.5z" }]],
+  /** "Chamada de voz": a telephone handset. */
+  callPhone: [
+    [
+      "path",
+      {
+        d: "M6.2 3.5h2l1.2 3.3-1.6 1.2a8.5 8.5 0 0 0 4.2 4.2l1.2-1.6 3.3 1.2v2a1.8 1.8 0 0 1-1.9 1.8A12.5 12.5 0 0 1 4.4 5.4 1.8 1.8 0 0 1 6.2 3.5z",
+      },
+    ],
+  ],
+  /** "Chamada de vídeo": a camera with its lens to the side. */
+  camera: [
+    ["rect", { x: "2.5", y: "5.5", width: "10", height: "9", rx: "2" }],
+    ["path", { d: "m12.5 9 5-2.7v7.4l-5-2.7z" }],
+  ],
   /** "Abrir no celular". */
   phone: [
     ["rect", { x: "5.5", y: "2.5", width: "9", height: "15", rx: "2" }],
