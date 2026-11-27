@@ -244,6 +244,8 @@ export interface FakeState {
   /** Secrets on agents' computers, by agent id (`secrets.list`). */
   agentSecrets?: Record<string, AgentSecret[]>;
   members: Member[];
+  /** `calls.enabled`: the server has LiveKit on (default: off). */
+  callsEnabled?: boolean;
   /** Agents that think with a person's plan, by person (`orgs.removal`); unset = none. */
   removalLosesPlan?: Record<string, { id: string; name: string }[]>;
   agents: Agent[];
@@ -3938,13 +3940,32 @@ export function createFakeHttpApi(state: FakeState): Omit<HttpApi, FakedParts> {
       },
     },
     calls: {
-      enabled: async () => false,
-      token: async (_orgId, channelId) => ({
-        url: "wss://rtc.example.com",
-        token: "fake-token",
-        room: `channel:${channelId}`,
-        expiresIn: 600,
-      }),
+      enabled: async () => state.callsEnabled ?? false,
+      ring: async (orgId, channelId, video) => {
+        log("calls.ring", orgId, channelId, video);
+        return { expiresAt: new Date(Date.now() + 45_000).toISOString(), ttlSeconds: 45 };
+      },
+      cancel: async (orgId, channelId) => {
+        log("calls.cancel", orgId, channelId);
+        return { cleared: true };
+      },
+      accept: async (orgId, channelId) => {
+        log("calls.accept", orgId, channelId);
+        return { cleared: true };
+      },
+      decline: async (orgId, channelId, reason) => {
+        log("calls.decline", orgId, channelId, reason);
+        return { cleared: true };
+      },
+      token: async (orgId, channelId) => {
+        log("calls.token", orgId, channelId);
+        return {
+          url: "wss://rtc.example.com",
+          token: "fake-token",
+          room: `channel:${channelId}`,
+          expiresIn: 600,
+        };
+      },
     },
     dms: {
       list: async () => state.dms.map(dmRow),

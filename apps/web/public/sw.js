@@ -111,8 +111,31 @@ self.addEventListener("push", (event) => {
   );
 });
 
+/** What a click on a ringing call's notification asks of the open tab (`CALL_ACTION_MESSAGE` in call-notify.ts). */
+const CALL_MESSAGE = "agentes.call.action";
+
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
+  const call = event.notification.data?.call;
+  if (call && isId(call.orgId) && isId(call.channelId)) {
+    // A call ringing: the tab answers it ("Atender", "Recusar") or just comes forward. No tab means the ring is
+    // already gone (it travels on the tab's socket), so the app just opens.
+    const action = event.action === "accept" || event.action === "decline" ? event.action : "open";
+    event.waitUntil(
+      (async () => {
+        const windows = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+        const same = windows.filter((client) => new URL(client.url).origin === self.location.origin);
+        const client = same.find((c) => c.focused) ?? same.find((c) => c.visibilityState === "visible") ?? same[0];
+        if (client) {
+          if (action !== "decline") await client.focus().catch(() => {});
+          client.postMessage({ type: CALL_MESSAGE, action, orgId: call.orgId, channelId: call.channelId });
+          return;
+        }
+        await self.clients.openWindow(inAppUrl(event.notification.data?.url));
+      })(),
+    );
+    return;
+  }
   const open = readOpenData(event.notification.data?.open);
   const url = openUrl(event.notification.data?.url, open);
   event.waitUntil(

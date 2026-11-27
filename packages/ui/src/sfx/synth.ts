@@ -23,6 +23,8 @@ export const SOUNDS = [
   "mention",
   "discard",
   "record",
+  "ring",
+  "ringback",
 ] as const;
 export type SoundName = (typeof SOUNDS)[number];
 
@@ -331,6 +333,26 @@ const SCORE: Record<SoundName, [peak: number, score: Score]> = {
       v(o, 0.12, "B5", { d: 0.32 });
       v(o, 0.42, "E6", { d: 0.28, g: 0.7 });
       v(o, 0.54, "B5", { d: 0.45, g: 0.7 });
+    },
+  ],
+  // Someone is calling you: two quick pairs, the one meant to be heard from another room. The app repeats it, with a gap.
+  ring: [
+    0.85,
+    (o, v) => {
+      for (const at of [0, 0.4]) {
+        v(o, at, "E6", { d: 0.16, g: 0.8 });
+        v(o, at + 0.1, "B5", { d: 0.2, g: 0.8 });
+        v(o, at + 0.2, "E6", { d: 0.16, g: 0.7 });
+        v(o, at + 0.3, "B5", { d: 0.22, g: 0.7 });
+      }
+    },
+  ],
+  // What the caller hears while it rings at the other end: one soft, low pair, so it never reads as the callee's ring.
+  ringback: [
+    0.7,
+    (o, v) => {
+      v(o, 0, "B4", { d: 0.5, g: 0.6 });
+      v(o, 0.02, "E5", { d: 0.55, g: 0.45 });
     },
   ],
   approved: [

@@ -109,6 +109,39 @@ export interface CallToken {
   expiresIn: number;
 }
 
+/** A ring in a direct message: how long it waits and until when (`POST .../call/ring`). */
+export interface CallRing {
+  expiresAt: string;
+  ttlSeconds: number;
+}
+
+/** Why a ring ended, as both sides hear it. */
+export type CallEndReason = "accepted" | "declined" | "cancelled" | "expired" | "busy";
+
+/** Someone is calling (to the caller and the callee, on every tab they have open). */
+export interface CallRingingEvent {
+  type: "call.ringing";
+  orgId: string;
+  channelId: string;
+  callerId: string;
+  callerName: string;
+  calleeId: string;
+  video: boolean;
+  expiresAt: string;
+}
+
+/** The ring is over: answered, turned down, hung up, missed, or the other side was on another call. */
+export interface CallEndedEvent {
+  type: "call.ended";
+  orgId: string;
+  channelId: string;
+  callerId: string;
+  calleeId: string;
+  reason: CallEndReason;
+}
+
+export type CallEvent = CallRingingEvent | CallEndedEvent;
+
 export interface GifKey {
   /** `env`: `GIPHY_API_KEY`, read-only here. `settings`: added in Settings. Null: none. */
   source: "env" | "settings" | null;
@@ -2298,6 +2331,7 @@ export type UserEvent =
   | NotificationEvent
   | ThreadFollowEvent
   | VoiceDroppedEvent
+  | CallEvent
   | { type: string };
 
 // ── Approvals, connectors, scopes ─────────────────────────────────────────────

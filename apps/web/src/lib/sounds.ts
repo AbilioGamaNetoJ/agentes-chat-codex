@@ -74,6 +74,55 @@ function play(name: SoundName) {
   source.start();
 }
 
+/** Gap between two rings of a loop, after the sound itself. */
+const LOOP_GAP_MS = 1200;
+/** How soon a loop tries again while the browser still keeps audio off (no click or key yet). */
+const LOOP_RETRY_MS = 500;
+
+/**
+ * A sound repeated (a call ringing) until the returned stop is called. Silent when the person's choice is off (the
+ * screen still shows the call), and patient with a browser that keeps audio off until the first gesture: it asks to
+ * resume the context and tries again, so the ring starts the moment it may. Always stop it when its owner goes.
+ */
+export function startLoop(name: SoundName, gapMs: number = LOOP_GAP_MS): () => void {
+  let stopped = false;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  let source: AudioBufferSourceNode | null = null;
+  const tick = () => {
+    if (stopped) return;
+    let next = LOOP_RETRY_MS;
+    if (choice === "off") {
+      next = 1000;
+    } else {
+      const c = audio();
+      if (c && out) {
+        if (c.state !== "running") {
+          void c.resume().catch(() => {});
+        } else {
+          const buf = buffer(c, choice, name);
+          source = c.createBufferSource();
+          source.buffer = buf;
+          source.connect(out);
+          source.start();
+          next = buf.duration * 1000 + gapMs;
+        }
+      }
+    }
+    timer = setTimeout(tick, next);
+  };
+  tick();
+  return () => {
+    stopped = true;
+    clearTimeout(timer);
+    try {
+      source?.stop();
+    } catch {
+      // Already over.
+    }
+    source = null;
+  };
+}
+
 /**
  * The tab that had the person last: with the app open in several tabs, only that one plays what arrives while
  * hidden (each tab gets the same events).

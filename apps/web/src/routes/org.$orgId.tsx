@@ -11,6 +11,7 @@ import { FeedbackHost } from "@/components/arrival/FeedbackDialog";
 import { ArtifactViewerProvider } from "@/components/artifacts/viewer-context";
 import { CommandMenu } from "@/components/CommandMenu";
 import { ConfirmEmailBanner } from "@/components/ConfirmEmail";
+import { CallProvider } from "@/components/call/CallProvider";
 import { ComputerDialogProvider } from "@/components/computer/provider";
 import { ConnectAiProvider } from "@/components/connect-ai-context";
 import { DesktopDragStrip } from "@/components/DesktopDragStrip";
@@ -149,43 +150,46 @@ function OrgLayout() {
                   <ConnectAiProvider>
                     {/* One new agent's dialog for every way in (ADR 0164): the sidebar, the pages and the menus. */}
                     <NewAgentProvider>
-                      <div className="shell">
-                        <CommandMenu />
-                        <LeaveChannelDialog />
-                        {!focused && (
-                          <>
-                            <NavScrim />
-                            <Sidebar />
-                            <ShellBar />
-                          </>
-                        )}
-                        {/* The work area: notices on top (agents paused, the workspace's computer on its way, a computer
-                    the agents run on went offline), then the page. Being deleted, it reads as ever under one line that
-                    says so (ADR 0088 §7), in the Criar agente flow too: its work stopped, nothing else is news. */}
-                        <div className={focused ? "shell__work shell__work--bare" : "shell__work"}>
-                          {membership.deletion && <DeletingBanner />}
-                          {!focused && !membership.deletion && (
+                      {/* Calls above the routes (ADR 0220): the room and its ring outlive a page change. */}
+                      <CallProvider>
+                        <div className="shell">
+                          <CommandMenu />
+                          <LeaveChannelDialog />
+                          {!focused && (
                             <>
-                              <ConfirmEmailBanner />
-                              <HoldBanner />
-                              <ComputerSetupNotice />
-                              <OutageNotices />
+                              <NavScrim />
+                              <Sidebar />
+                              <ShellBar />
                             </>
                           )}
-                          <div className="shell__pages">
-                            <ComputerDialogProvider>
-                              <DetailsHost>
-                                <PushOpens />
-                                {/* What reaches me while I'm here, at the top of the work area (ADR 0071 §9). */}
-                                {!focused && <NoticeIsland />}
-                                <Arrival />
-                                <FeedbackHost />
-                                <Outlet />
-                              </DetailsHost>
-                            </ComputerDialogProvider>
+                          {/* The work area: notices on top (agents paused, the workspace's computer on its way, a computer
+                    the agents run on went offline), then the page. Being deleted, it reads as ever under one line that
+                    says so (ADR 0088 §7), in the Criar agente flow too: its work stopped, nothing else is news. */}
+                          <div className={focused ? "shell__work shell__work--bare" : "shell__work"}>
+                            {membership.deletion && <DeletingBanner />}
+                            {!focused && !membership.deletion && (
+                              <>
+                                <ConfirmEmailBanner />
+                                <HoldBanner />
+                                <ComputerSetupNotice />
+                                <OutageNotices />
+                              </>
+                            )}
+                            <div className="shell__pages">
+                              <ComputerDialogProvider>
+                                <DetailsHost>
+                                  <PushOpens />
+                                  {/* What reaches me while I'm here, at the top of the work area (ADR 0071 §9). */}
+                                  {!focused && <NoticeIsland />}
+                                  <Arrival />
+                                  <FeedbackHost />
+                                  <Outlet />
+                                </DetailsHost>
+                              </ComputerDialogProvider>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </CallProvider>
                     </NewAgentProvider>
                   </ConnectAiProvider>
                 </RemoveMemberProvider>
