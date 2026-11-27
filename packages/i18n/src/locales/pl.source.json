@@ -9635,6 +9635,57 @@
   "call.shareUnsupported": {
     "value": "This browser can't share the screen."
   },
+  "call.minimize": {
+    "value": "Minimize call"
+  },
+  "call.back": {
+    "value": "Back to the call"
+  },
+  "call.miniLabel": {
+    "value": "Call in progress with {{name}}"
+  },
+  "call.ringing": {
+    "value": "{{name}} is calling"
+  },
+  "call.ringingBadge": {
+    "value": "calling…"
+  },
+  "call.ringingVideo": {
+    "value": "{{name}} is calling (video)"
+  },
+  "call.calling": {
+    "value": "Calling {{name}}…"
+  },
+  "call.answer": {
+    "value": "Answer"
+  },
+  "call.decline": {
+    "value": "Decline"
+  },
+  "call.cancel": {
+    "value": "Cancel"
+  },
+  "call.notAnswered": {
+    "value": "{{name}} didn't answer"
+  },
+  "call.declined": {
+    "value": "{{name}} declined the call"
+  },
+  "call.busy": {
+    "value": "{{name}} is on another call"
+  },
+  "call.switchConfirm": {
+    "value": "You are on a call with {{current}}. Leave it and call {{name}}?"
+  },
+  "call.switchIncoming": {
+    "value": "Leave your call with {{current}} to answer {{name}}?"
+  },
+  "call.startAudio": {
+    "value": "Turn on call sound"
+  },
+  "call.notificationBody": {
+    "value": "Open the app to answer."
+  },
   "dm.subtitle": {
     "value": "{{role}} · owned by {{owner}}"
   },

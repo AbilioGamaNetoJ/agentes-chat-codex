@@ -133,7 +133,7 @@ export function DmPage({ target, focusMessageId }: { target: DmTarget; focusMess
           {agent && !rightHand && <ModelPickerButton agent={agent} className="channel__brain" />}
           {agent && <ComputerButton agent={agent} queueOnly={side?.docked && seesDetails(agent)} />}
           {/* A call with the person, in the same screen (ADR 0220); an agent has no call. */}
-          {person && <CallButton channelId={dm.data.channelId} name={name} />}
+          {person && <CallButton channelId={dm.data.channelId} peerId={person.userId} name={name} />}
           {/* The same field as a channel's, held to this DM. */}
           <HeaderSearch channelId={dm.data.channelId} onOpen={onSearch} searching={searching} dm />
           {/* Its own list, as its right click elsewhere, with this conversation's background. */}

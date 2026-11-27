@@ -104,6 +104,7 @@ import type {
   CalendarEventInput,
   CalendarEventPatch,
   CalendarRange,
+  CallRing,
   CallToken,
   Channel,
   ChannelCard,
@@ -1535,6 +1536,17 @@ export interface ApiClient {
      * aren't set up, `rate_limited` (429) past 20 a minute.
      */
     token(orgId: string, channelId: string): Promise<CallToken>;
+    /**
+     * Rings the other person of a DM between two people for 45 seconds: both sides hear `call.ringing`, then
+     * `call.ended`. `call_busy` (409) when someone is ringing elsewhere, `call_not_direct` (400) outside a person's DM.
+     */
+    ring(orgId: string, channelId: string, video: boolean): Promise<CallRing>;
+    /** The caller hangs up before an answer. `cleared` false: the ring was already over. */
+    cancel(orgId: string, channelId: string): Promise<{ cleared: boolean }>;
+    /** The person rung picks up (then fetches `token`). */
+    accept(orgId: string, channelId: string): Promise<{ cleared: boolean }>;
+    /** The person rung turns it down; `busy` when they are on another call. */
+    decline(orgId: string, channelId: string, reason?: "declined" | "busy"): Promise<{ cleared: boolean }>;
   };
   dms: {
     /** My direct conversations, with unread counts. */

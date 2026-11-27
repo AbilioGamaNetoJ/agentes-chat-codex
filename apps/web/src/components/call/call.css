@@ -45,3 +45,124 @@
   padding: 24px;
   text-align: center;
 }
+
+/* The room under a small bar when the person is elsewhere in the app: the room stays mounted, so the sound goes on. */
+.call--mini {
+  inset: auto 16px 16px auto;
+  z-index: 60;
+  display: block;
+  max-width: calc(100vw - 32px);
+  border-radius: 12px;
+  background: var(--bg-raised, #1b1b1f);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  padding: 8px 10px;
+}
+.call__room--mini {
+  display: block;
+  flex: none;
+}
+.call__minibar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.call__miniwho {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  min-width: 0;
+}
+.call__mininame {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 14ch;
+}
+.call__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+}
+.call__time {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+  font-weight: 400;
+}
+.call__head {
+  justify-content: space-between;
+}
+.call__btn {
+  appearance: none;
+  border: 0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.call__btn--leave {
+  background: #c0392b;
+  color: #fff;
+}
+
+/* The ring: cards at the top of the window, over everything but a full call. */
+.call-cards {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(360px, calc(100vw - 24px));
+}
+.call-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bg-raised, #1b1b1f);
+  color: var(--fg, #fff);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+.call-card--incoming {
+  outline: 2px solid var(--accent, #4c8bf5);
+}
+.call-card__title {
+  margin: 0;
+  font-weight: 600;
+}
+.call-card__acts {
+  display: flex;
+  gap: 6px;
+}
+
+/* A row in the sidebar whose person is ringing (or being rung): a pulsing phone. */
+.sidebar__ringing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--accent, #4c8bf5);
+  white-space: nowrap;
+  animation: call-pulse 1.2s ease-in-out infinite;
+}
+@keyframes call-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar__ringing {
+    animation: none;
+  }
+}

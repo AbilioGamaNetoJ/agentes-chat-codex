@@ -136,6 +136,7 @@ import { useUnreadTitle } from "@/hooks/useUnreadTitle";
 import { useWorkspaceGroups } from "@/hooks/useWorkspaceGroups";
 import { switchAccount } from "@/lib/accounts";
 import { requestAgentPanel } from "@/lib/agent-panel-ask";
+import { useRingingWith } from "@/lib/call-signal";
 import { requestChannelDetails } from "@/lib/channel-details";
 import type { MenuEntry } from "@/lib/context-menu";
 import { onPhoneAsk, takePhoneAsk, thisMac } from "@/lib/desktop";
@@ -1990,11 +1991,12 @@ function PersonRow({
   onOpen: () => void;
 }) {
   const { t } = useTranslation();
-  const { org } = useOrg();
+  const { org, me } = useOrg();
   const shown = usePersonPresence(m.userId);
   const word = shown ? t(`presence.${shown.presence}`) : null;
   const line = shown?.status ? personLine(shown.status) : null;
   const personEntries = usePersonMenu();
+  const ringing = useRingingWith(m.userId, me.user.id);
   return (
     <Link
       {...entityMenu(() => personEntries(m))}
@@ -2016,6 +2018,12 @@ function PersonRow({
         presenceLabel={word ?? undefined}
       />
       <span className="sidebar__item-label">{m.name}</span>
+      {ringing && (
+        <span className="sidebar__ringing" role="status">
+          <Icon name="callPhone" size={14} />
+          {t("call.ringingBadge")}
+        </span>
+      )}
       {unread > 0 ? <UnreadCount count={unread} /> : pinned && <PinnedMark />}
     </Link>
   );

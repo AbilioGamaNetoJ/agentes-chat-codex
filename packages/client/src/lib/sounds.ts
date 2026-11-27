@@ -16,7 +16,9 @@ export type SoundName =
   | "stop"
   | "mention"
   | "discard"
-  | "record";
+  | "record"
+  | "ring"
+  | "ringback";
 
 let player: ((name: SoundName) => void) | null = null;
 

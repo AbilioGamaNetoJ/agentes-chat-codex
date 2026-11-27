@@ -73,6 +73,7 @@ import type {
   BrowserProfile,
   CalendarEvent,
   CalendarRange,
+  CallRing,
   CallToken,
   Channel,
   ChannelCard,
@@ -1309,6 +1310,16 @@ export function createHttpApi(options: TransportOptions = {}): HttpApi {
       enabled: async (orgId) => (await request<{ enabled: boolean }>(`${org(orgId)}/calls`)).enabled,
       token: (orgId, channelId) =>
         request<CallToken>(`${org(orgId)}/channels/${enc(channelId)}/call-token`, { json: {} }),
+      ring: (orgId, channelId, video) =>
+        request<CallRing>(`${org(orgId)}/channels/${enc(channelId)}/call/ring`, { json: { video } }),
+      cancel: (orgId, channelId) =>
+        request<{ cleared: boolean }>(`${org(orgId)}/channels/${enc(channelId)}/call/cancel`, { json: {} }),
+      accept: (orgId, channelId) =>
+        request<{ cleared: boolean }>(`${org(orgId)}/channels/${enc(channelId)}/call/accept`, { json: {} }),
+      decline: (orgId, channelId, reason = "declined") =>
+        request<{ cleared: boolean }>(`${org(orgId)}/channels/${enc(channelId)}/call/decline`, {
+          json: { reason },
+        }),
     },
     dms: {
       list: async (orgId) => (await request<{ dms: DirectMessage[] }>(`${org(orgId)}/dms`)).dms,

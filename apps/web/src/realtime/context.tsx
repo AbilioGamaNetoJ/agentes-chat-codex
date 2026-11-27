@@ -113,6 +113,7 @@ import { createContext, type ReactNode, useCallback, useContext, useEffect, useM
 import { useTranslation } from "react-i18next";
 import { useApi } from "@/api/context";
 import { checkAppVersion } from "@/lib/app-version";
+import { applyCallEvent } from "@/lib/call-signal";
 import { desktopNotice, inDesktopApp, thisMac } from "@/lib/desktop";
 import { feedIsland, island } from "@/lib/island";
 import { notificationAudience } from "@/lib/sounds";
@@ -488,6 +489,8 @@ export function RealtimeProvider({
     });
     // Approvals I can decide arrive here even when I'm not in that channel (sidebar badge, Aprovações).
     const offUser = conn.onUserEvent((event) => {
+      // Someone is calling, or a ring ended (ADR 0220): the call provider and the sidebar read it.
+      applyCallEvent(event);
       if ((event.type === "approval.created" || event.type === "approval.decided") && "approval" in event) {
         cacheApproval(qc, orgId, event.approval);
         void qc.invalidateQueries({ queryKey: keys.approvals(orgId) });
