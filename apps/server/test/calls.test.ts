@@ -1,5 +1,5 @@
-import { userTopic } from "@agenteschat/adapters";
 import { afterEach, expect, test } from "bun:test";
+import { userTopic } from "@agenteschat/adapters";
 import { browser, createTestServer, joinByInvitation, seedOrg, signUp, type TestServer } from "./harness";
 
 /** Calls inside a conversation: a join token for its room alone, signed on the server (ADR 0220). */
@@ -70,8 +70,7 @@ const ringSetup = async () => {
   const { orgId } = await seedOrg(owner);
   const bia = await joinByInvitation(t, owner, orgId, "bia@example.com");
   const leo = await joinByInvitation(t, owner, orgId, "leo@example.com");
-  const idOf = async (b: typeof owner) =>
-    ((await (await b("/api/app/me")).json()) as { user: { id: string } }).user.id;
+  const idOf = async (b: typeof owner) => ((await (await b("/api/app/me")).json()) as { user: { id: string } }).user.id;
   const [ownerId, biaId, leoId] = [await idOf(owner), await idOf(bia), await idOf(leo)];
   const base = `/api/app/organizations/${orgId}`;
   const dm = async (b: typeof owner, userId: string) =>
@@ -94,13 +93,19 @@ test("a ring reaches both people, and accepting clears it for both", async () =>
   expect(res.status).toBe(200);
   await Bun.sleep(20);
   for (const id of [s.ownerId, s.biaId]) {
-    expect(s.events[id]?.[0]).toMatchObject({ type: "call.ringing", callerId: s.ownerId, calleeId: s.biaId, video: true });
+    expect(s.events[id]?.[0]).toMatchObject({
+      type: "call.ringing",
+      callerId: s.ownerId,
+      calleeId: s.biaId,
+      video: true,
+    });
   }
   // Only the callee answers.
   expect(((await (await s.call(s.owner, ch, "accept")).json()) as { cleared: boolean }).cleared).toBe(false);
   expect(((await (await s.call(s.bia, ch, "accept")).json()) as { cleared: boolean }).cleared).toBe(true);
   await Bun.sleep(20);
-  for (const id of [s.ownerId, s.biaId]) expect(s.events[id]?.[1]).toMatchObject({ type: "call.ended", reason: "accepted" });
+  for (const id of [s.ownerId, s.biaId])
+    expect(s.events[id]?.[1]).toMatchObject({ type: "call.ended", reason: "accepted" });
   // Idempotent.
   expect(((await (await s.call(s.bia, ch, "accept")).json()) as { cleared: boolean }).cleared).toBe(false);
 });
@@ -126,7 +131,9 @@ test("someone already ringing elsewhere is busy; a conversation that isn't a DM 
   const busy = await s.call(s.leo, leoToBia, "ring");
   expect(busy.status).toBe(409);
   expect(((await busy.json()) as { error: { code: string } }).error.code).toBe("call_busy");
-  const general = (await (await s.owner(`${s.base}/channels`)).json()) as { channels?: { id: string }[] } | { id: string }[];
+  const general = (await (await s.owner(`${s.base}/channels`)).json()) as
+    | { channels?: { id: string }[] }
+    | { id: string }[];
   const first = Array.isArray(general) ? general[0] : general.channels?.[0];
   const notDm = await s.call(s.owner, first?.id ?? "", "ring");
   expect(notDm.status).toBe(400);
